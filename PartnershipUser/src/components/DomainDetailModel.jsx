@@ -146,7 +146,7 @@ const DomainDetailPage = () => {
         </div>
       </div>
       {/* Description */}
-      <div className="relative w-full max-w-7xl mx-auto px-8 pb-8 text-justify -mt-12">
+      <div className="relative w-full max-w-7xl mx-auto px-8 pb-8 text-justify ">
         <h3 className="text-xl font-semibold text-white mb-3">
           Domain Description
         </h3>

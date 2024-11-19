@@ -95,12 +95,12 @@ const Hero = () => {
               <div className="text-gray-400">Premium Domains</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-indigo-400 mb-2">5k+</div>
+              <div className="text-3xl font-bold text-indigo-400 mb-2">100+</div>
               <div className="text-gray-400">Active Investors</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-indigo-400 mb-2">
-                $2M+
+                $80k+
               </div>
               <div className="text-gray-400">Total Value</div>
             </div>

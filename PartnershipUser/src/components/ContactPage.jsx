@@ -9,17 +9,17 @@ const ContactPage = () => {
     {
       icon: <MapPin className="w-6 h-6 text-indigo-400" />,
       title: "Location",
-      details: ["123 Domain Street", "Tech Valley, CA 94105", "United States"],
+      details: ["Shahdara, Lahore, Pakistan"],
     },
     {
       icon: <Phone className="w-6 h-6 text-indigo-400" />,
       title: "Phone Numbers",
-      details: ["+1 (555) 123-4567", "+1 (555) 765-4321"],
+      details: ["+92 312 1611344"],
     },
     {
       icon: <Mail className="w-6 h-6 text-indigo-400" />,
       title: "Email Addresses",
-      details: ["support@partnership.top", "info@partnership.top"],
+      details: ["muzairqureshi06@gmail.com"],
     },
   ];
   const [formData, setFormData] = useState({
@@ -124,8 +124,8 @@ const ContactPage = () => {
       {/* Contact Banner */}
       <div className="relative py-28">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-transparent" />
-        <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-indigo-500/10 blur-3xl rounded-full transform translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute left-0 bottom-0 w-1/2 h-1/2 bg-indigo-600/10 blur-3xl rounded-full transform -translate-x-1/2 translate-y-1/2" />
+        <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-indigo-500/10 blur-3xl rounded-full" />
+        <div className="absolute left-0 bottom-0 w-1/2 h-1/2 bg-indigo-600/10 blur-3xl rounded-full" />
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-400 to-indigo-200 text-transparent bg-clip-text text-center mb-6">
             Contact Us

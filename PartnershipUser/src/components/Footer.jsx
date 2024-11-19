@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, Twitter, Linkedin, Github, Facebook } from "lucide-react";
+import { Mail, Twitter, Linkedin, Github, Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,17 +16,22 @@ const Footer = () => {
       {
         label: "Twitter",
         icon: <Twitter className="w-5 h-5" />,
-        href: "https://twitter.com",
+        href: "https://twitter.com/muzairqureshi06",
       },
       {
         label: "LinkedIn",
         icon: <Linkedin className="w-5 h-5" />,
-        href: "https://linkedin.com",
+        href: "https://linkedin.com/in/muzairqureshi06",
       },
       {
         label: "Facebook",
         icon: <Facebook className="w-5 h-5" />,
-        href: "https://facebook.com",
+        href: "https://facebook.com/muzairqureshi06",
+      },
+      {
+        label: "Instagram",
+        icon: <Instagram className="w-5 h-5" />,
+        href: "https://instagram.com/muzairqureshi06",
       },
     ],
   };
@@ -104,10 +109,10 @@ const Footer = () => {
             <div className="flex items-center space-x-2 text-gray-400">
               <Mail className="w-5 h-5" />
               <a
-                href="mailto:contact@partnership.top"
+                href="mailto:muzairqureshi06@gmail.com"
                 className="hover:text-white transition-colors duration-300"
               >
-                contact@partnership.top
+                muzairqureshi06@gmail.com
               </a>
             </div>
           </div>

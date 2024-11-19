@@ -125,7 +125,8 @@ function Navbar() {
           md:hidden
         `}
       >
-        <div className="px-6 py-20 space-y-2">
+        <div className="text-gray-300 text-3xl p-6">Menu</div>
+        <div className="px-6 py-4 space-y-2">
           {[
             { to: "/", label: "Home" },
             { to: "/how-it-works", label: "How it works?" },
