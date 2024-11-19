@@ -1,13 +1,13 @@
-import React from 'react';
-import { Check, Globe, Shield, ChartBar } from 'lucide-react';
+import React from "react";
+import { Check, Globe, Shield, ChartBar } from "lucide-react";
 
 const Hero = () => {
   const scrollToDomains = () => {
-    const domainList = document.getElementById('domain-list');
+    const domainList = document.getElementById("domain-list");
     if (domainList) {
-      domainList.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      domainList.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
@@ -22,19 +22,20 @@ const Hero = () => {
               Invest in Premium Domains
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
-              Own shares in high-value domains and be part of the digital real estate revolution. 
-              Start your journey into the future of digital asset ownership today.
+              Own shares in high-value domains and be part of the digital real
+              estate revolution. Start your journey into the future of digital
+              asset ownership today.
             </p>
-            
+
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-              <button 
+              <button
                 onClick={scrollToDomains}
                 className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors duration-200 shadow-lg shadow-indigo-500/25"
               >
                 Start Investing
               </button>
-              <button 
+              <button
                 onClick={scrollToDomains}
                 className="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-lg font-semibold transition-colors duration-200"
               >
@@ -53,7 +54,8 @@ const Hero = () => {
                 Fractional Ownership
               </h3>
               <p className="text-gray-400">
-                Own shares in premium domains with transparent pricing and flexible investment options
+                Own shares in premium domains with transparent pricing and
+                flexible investment options
               </p>
             </div>
 
@@ -65,7 +67,8 @@ const Hero = () => {
                 Secure Platform
               </h3>
               <p className="text-gray-400">
-                Advanced security measures and transparent ownership structure for peace of mind
+                Advanced security measures and transparent ownership structure
+                for peace of mind
               </p>
             </div>
 
@@ -77,7 +80,8 @@ const Hero = () => {
                 Flexible Investment
               </h3>
               <p className="text-gray-400">
-                Start with any percentage and grow your portfolio at your own pace
+                Start with any percentage and grow your portfolio at your own
+                pace
               </p>
             </div>
           </div>
@@ -85,7 +89,9 @@ const Hero = () => {
           {/* Stats */}
           <div className="max-w-4xl mx-auto mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-3xl font-bold text-indigo-400 mb-2">100+</div>
+              <div className="text-3xl font-bold text-indigo-400 mb-2">
+                100+
+              </div>
               <div className="text-gray-400">Premium Domains</div>
             </div>
             <div className="text-center">
@@ -93,11 +99,15 @@ const Hero = () => {
               <div className="text-gray-400">Active Investors</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-indigo-400 mb-2">$2M+</div>
+              <div className="text-3xl font-bold text-indigo-400 mb-2">
+                $2M+
+              </div>
               <div className="text-gray-400">Total Value</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-indigo-400 mb-2">24/7</div>
+              <div className="text-3xl font-bold text-indigo-400 mb-2">
+                24/7
+              </div>
               <div className="text-gray-400">Support</div>
             </div>
           </div>

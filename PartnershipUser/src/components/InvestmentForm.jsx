@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import emailjs from 'emailjs-com';
 import DomainService from '../services/Domain';
 import { Send, X } from 'lucide-react';
-import formImage from '../../public/formImage.png';
+import formImage from '../assets/formImage.png';
 
 const InvestmentForm = () => {
   const { domainId } = useParams();
@@ -14,6 +14,7 @@ const InvestmentForm = () => {
   const [domainExtension, setDomainExtension] = useState(null);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -51,6 +52,7 @@ const InvestmentForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitLoading(true);
     const templateParams = {
       ...formData,
       domainName,
@@ -75,15 +77,17 @@ const InvestmentForm = () => {
         sharePercentage: '',
         termsAccepted: false
       });
+      setSubmitLoading(false);
     } catch (error) {
       console.error('Failed to send email:', error);
+      setSubmitLoading(false);
       setShowError(true);
     }
   };
 
   const handleCloseSuccess = () => {
     setShowSuccess(false);
-    navigate('/'); // Redirect to home page
+    navigate('/');
   };
 
   if (loading) {
@@ -93,7 +97,6 @@ const InvestmentForm = () => {
       </div>
     );
   }
-
 
   return (
     <div className="min-h-screen relative flex items-center justify-center p-4 mt-16">
@@ -148,7 +151,12 @@ const InvestmentForm = () => {
         </div>
       )}
 
-<form onSubmit={handleSubmit} className="w-full max-w-7xl grid md:grid-cols-5 grid-cols-1 p-8 gap-8">
+<form onSubmit={handleSubmit} className="relative w-full max-w-7xl grid md:grid-cols-5 grid-cols-1 p-8 gap-8">
+    {submitLoading && (
+        <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-50">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
+        </div>
+    )}
       <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800 md:col-span-3">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-200">
@@ -168,6 +176,7 @@ const InvestmentForm = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
+                placeholder='Enter Your Name'
                 className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:border-indigo-500 transition-colors"
                 required
               />
@@ -183,6 +192,7 @@ const InvestmentForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
+                placeholder='Enter Your Email'
                 className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:border-indigo-500 transition-colors"
                 required
               />
@@ -199,6 +209,7 @@ const InvestmentForm = () => {
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
+              placeholder='Enter Your WhatsApp Number'
               className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:border-indigo-500 transition-colors"
               required
             />
@@ -216,6 +227,7 @@ const InvestmentForm = () => {
               onChange={handleInputChange}
               min="1"
               max="100"
+              placeholder='Enter Percentage of Shares to Buy'
               className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:border-indigo-500 transition-colors"
               required
             />
@@ -231,6 +243,7 @@ const InvestmentForm = () => {
               value={formData.message}
               onChange={handleInputChange}
               rows={4}
+              placeholder='Type Your Message Here...'
               className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:border-indigo-500 transition-colors"
               required
             ></textarea>

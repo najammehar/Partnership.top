@@ -1,36 +1,34 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Mail, Twitter, Linkedin, Github, Facebook } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Mail, Twitter, Linkedin, Github, Facebook } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     product: [
-      { label: 'How it works', path: '/how-it-works' },
-      { label: 'About Us', path: '/about' },
-      { label: 'Contact', path: '/contact' },
+      { label: "How it works", path: "/how-it-works" },
+      { label: "About Us", path: "/about" },
+      { label: "Contact", path: "/contact" },
     ],
-    legal: [
-      { label: 'Terms & Conditions', path: '/terms' },
-    ],
+    legal: [{ label: "Terms & Conditions", path: "/terms" }],
     social: [
-      { 
-        label: 'Twitter',
+      {
+        label: "Twitter",
         icon: <Twitter className="w-5 h-5" />,
-        href: 'https://twitter.com',
+        href: "https://twitter.com",
       },
       {
-        label: 'LinkedIn',
+        label: "LinkedIn",
         icon: <Linkedin className="w-5 h-5" />,
-        href: 'https://linkedin.com',
+        href: "https://linkedin.com",
       },
       {
-        label: 'Facebook',
+        label: "Facebook",
         icon: <Facebook className="w-5 h-5" />,
-        href: 'https://facebook.com',
+        href: "https://facebook.com",
       },
-    ]
+    ],
   };
 
   return (
@@ -40,14 +38,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-12 border-t border-gray-800">
           {/* Brand Column */}
           <div className="space-y-4">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-indigo-200 text-transparent bg-clip-text"
             >
               Partnership.top
             </Link>
             <p className="text-gray-400 text-sm">
-              Discover and invest in premium domain partnerships. Join our marketplace for digital assets today.
+              Discover and invest in premium domain partnerships. Join our
+              marketplace for digital assets today.
             </p>
             <div className="flex space-x-4">
               {footerLinks.social.map((social) => (
@@ -104,8 +103,8 @@ const Footer = () => {
             <h3 className="text-white font-semibold mb-4">Contact Us</h3>
             <div className="flex items-center space-x-2 text-gray-400">
               <Mail className="w-5 h-5" />
-              <a 
-                href="mailto:contact@partnership.top" 
+              <a
+                href="mailto:contact@partnership.top"
                 className="hover:text-white transition-colors duration-300"
               >
                 contact@partnership.top
@@ -122,7 +121,14 @@ const Footer = () => {
             </p>
             <div className="mt-4 sm:mt-0">
               <p className="text-gray-400 text-sm">
-                Made with ❤️ for the domain investment community
+                Made with ❤️ for the domain investment community by{" "}
+                <a
+                  href="https://najamulhassan.vercel.app"
+                  target="_blank"
+                  className="text-indigo-400 hover:text-white transition-colors duration-300"
+                >
+                    Najam Ul Hassan
+                </a>
               </p>
             </div>
           </div>

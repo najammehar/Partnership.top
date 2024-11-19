@@ -1,13 +1,17 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import { Hero, Navbar, DomainList } from "./components"
-import DomainDetailPage from './components/DomainDetailModel'
-import InvestmentForm from './components/InvestmentForm'
-import HowItWorks from './components/HowItWorks'
-import TermsAndConditions from './components/TermAndConditions'
-import AboutUs from './components/AboutUs'
-import ContactPage from './components/ContactPage'
-import Footer from './components/Footer'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import {
+  Hero,
+  Navbar,
+  DomainList,
+  DomainDetailPage,
+  InvestmentForm,
+  HowItWorks,
+  TermsAndConditions,
+  AboutUs,
+  ContactPage,
+  Footer,
+} from "./components";
 
 function App() {
   return (
@@ -19,12 +23,15 @@ function App() {
       </div>
       <Navbar />
       <Routes>
-        <Route path="/" element={
-          <>
-            <Hero />
-            <DomainList />
-          </>
-        } />
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <DomainList />
+            </>
+          }
+        />
         <Route path="/domain/:domainId" element={<DomainDetailPage />} />
         <Route path="/invest/:domainId" element={<InvestmentForm />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
@@ -33,8 +40,8 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
       <Footer />
-      </>
-  )
+    </>
+  );
 }
 
-export default App
+export default App;

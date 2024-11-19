@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X, ChevronRight } from "lucide-react";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,49 +11,55 @@ function Navbar() {
       setHasScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      const mobileMenu = document.getElementById('mobile-menu');
-      const menuButton = document.getElementById('menu-button');
-      
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuButton = document.getElementById("menu-button");
+
       if (isOpen && mobileMenu && menuButton) {
-        if (!mobileMenu.contains(event.target) && !menuButton.contains(event.target)) {
+        if (
+          !mobileMenu.contains(event.target) &&
+          !menuButton.contains(event.target)
+        ) {
           setIsOpen(false);
         }
       }
     };
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('touchstart', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
     };
   }, [isOpen]);
 
   return (
     <>
-      <nav className={`
+      <nav
+        className={`
         fixed top-0 left-0 right-0 z-40 w-full
         transition-all duration-300 ease-in-out
-        ${hasScrolled 
-          ? 'bg-gray-900/80 backdrop-blur-lg border-b border-gray-800' 
-          : 'bg-transparent'
+        ${
+          hasScrolled
+            ? "bg-gray-900/80 backdrop-blur-lg border-b border-gray-800"
+            : "bg-transparent"
         }
-      `}>
+      `}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <Link 
-                to="/" 
+              <Link
+                to="/"
                 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-400 to-indigo-200 text-transparent bg-clip-text hover:from-indigo-300 hover:to-indigo-100 transition-all duration-300"
               >
                 Partnership.top
@@ -63,13 +69,14 @@ function Navbar() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex md:items-center md:space-x-1">
               {[
+                { to: "/", label: "Home" },
                 { to: "/how-it-works", label: "How it works?" },
                 { to: "/about", label: "About" },
-                { to: "/contact", label: "Contact" }
+                { to: "/contact", label: "Contact" },
               ].map((item) => (
-                <Link 
+                <Link
                   key={item.to}
-                  to={item.to} 
+                  to={item.to}
                   className="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-indigo-500/10 transition-all duration-300"
                 >
                   {item.label}
@@ -101,32 +108,33 @@ function Navbar() {
 
       {/* Backdrop */}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/60 backdrop-blur-sm z-30 md:hidden"
           aria-hidden="true"
         />
       )}
 
       {/* Mobile Navigation */}
-      <div 
+      <div
         id="mobile-menu"
         className={`
           fixed inset-y-0 right-0 z-40 w-64
           transform transition-transform duration-300 ease-in-out
-          ${isOpen ? 'translate-x-0' : 'translate-x-full'}
+          ${isOpen ? "translate-x-0" : "translate-x-full"}
           bg-gray-900/95 backdrop-blur-lg border-l border-gray-800
           md:hidden
         `}
       >
         <div className="px-6 py-20 space-y-2">
           {[
+            { to: "/", label: "Home" },
             { to: "/how-it-works", label: "How it works?" },
             { to: "/about", label: "About" },
-            { to: "/contact", label: "Contact" }
+            { to: "/contact", label: "Contact" },
           ].map((item) => (
-            <Link 
+            <Link
               key={item.to}
-              to={item.to} 
+              to={item.to}
               className="group flex items-center justify-between w-full p-3 rounded-lg text-gray-300 hover:text-white hover:bg-indigo-500/10 transition-all duration-300"
               onClick={() => setIsOpen(false)}
             >

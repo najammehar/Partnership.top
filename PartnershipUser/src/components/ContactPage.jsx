@@ -1,5 +1,8 @@
-import React from 'react';
-import { MapPin, Phone, Mail, Clock, MessageSquare } from 'lucide-react';
+import React from "react";
+import { MapPin, Phone, Mail, Clock, MessageSquare } from "lucide-react";
+import emailjs from "emailjs-com";
+import { useState } from "react";
+import { X } from "lucide-react";
 
 const ContactPage = () => {
   const contactInfo = [
@@ -19,9 +22,105 @@ const ContactPage = () => {
       details: ["support@partnership.top", "info@partnership.top"],
     },
   ];
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitLoading(true);
+
+    try {
+      const response = await emailjs.send(
+        "service_teiwvjf",
+        "template_z38nehr",
+        formData,
+        "i_sIGUfnwlsJYGhnH"
+      );
+      console.log("Email sent successfully!", response.status, response.text);
+      setShowSuccess(true);
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      setSubmitLoading(false);
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      setSubmitLoading(false);
+      setShowError(true);
+    }
+  };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+  const handleCloseSuccess = () => {
+    setShowSuccess(false);
+  };
 
   return (
     <div className="relative min-h-screen pt-20">
+      {showSuccess && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold text-indigo-900">
+                Success!
+              </h3>
+              <button
+                onClick={handleCloseSuccess}
+                className="text-gray-500 hover:text-indigo-400"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <p className="text-gray-600 mb-4 ">
+              Your message has been sent successfully. We'll get back to you as
+              soon as possible.
+            </p>
+            <button
+              onClick={handleCloseSuccess}
+              className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showError && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold text-red-600">Error</h3>
+              <button
+                onClick={() => setShowError(false)}
+                className="text-gray-500 hover:text-indigo-400"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            <p className="text-gray-600 mb-4">
+              Failed to send your message. Please try again later.
+            </p>
+            <button
+              onClick={() => setShowError(false)}
+              className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-colors"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
       {/* Contact Banner */}
       <div className="relative py-28">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-transparent" />
@@ -32,7 +131,8 @@ const ContactPage = () => {
             Contact Us
           </h1>
           <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto">
-            Have questions? We're here to help! Reach out to us through any of the channels below.
+            Have questions? We're here to help! Reach out to us through any of
+            the channels below.
           </p>
         </div>
       </div>
@@ -44,43 +144,66 @@ const ContactPage = () => {
           <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800">
             <div className="flex items-center gap-3 mb-6">
               <MessageSquare className="w-6 h-6 text-indigo-400" />
-              <h2 className="text-2xl font-bold text-gray-200">Send Us a Message</h2>
+              <h2 className="text-2xl font-bold text-gray-200">
+                Send Us a Message
+              </h2>
             </div>
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="relative space-y-6">
+              {submitLoading && (
+                <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-50">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
+                </div>
+              )}
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-gray-300 mb-2" htmlFor="name">Name</label>
+                  <label className="block text-gray-300 mb-2" htmlFor="name">
+                    Name
+                  </label>
                   <input
                     type="text"
                     id="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:border-indigo-500 transition-colors"
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-300 mb-2" htmlFor="email">Email</label>
+                  <label className="block text-gray-300 mb-2" htmlFor="email">
+                    Email
+                  </label>
                   <input
                     type="email"
                     id="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:border-indigo-500 transition-colors"
                     placeholder="john@example.com"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-gray-300 mb-2" htmlFor="subject">Subject</label>
+                <label className="block text-gray-300 mb-2" htmlFor="subject">
+                  Subject
+                </label>
                 <input
                   type="text"
                   id="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:border-indigo-500 transition-colors"
                   placeholder="How can we help?"
                 />
               </div>
               <div>
-                <label className="block text-gray-300 mb-2" htmlFor="message">Message</label>
+                <label className="block text-gray-300 mb-2" htmlFor="message">
+                  Message
+                </label>
                 <textarea
                   id="message"
                   rows="5"
+                  value={formData.message}
+                  onChange={handleChange}
                   className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:border-indigo-500 transition-colors"
                   placeholder="Type your message here..."
                 ></textarea>

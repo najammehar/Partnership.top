@@ -4,12 +4,7 @@ import DomainCard from "./DomainCard";
 import { useDomains } from "../hooks/useDomains";
 
 function DomainList() {
-  const { 
-    domains, 
-    loading, 
-    fetchDomains, 
-    pagination 
-  } = useDomains();
+  const { domains, loading, fetchDomains, pagination } = useDomains();
 
   useEffect(() => {
     fetchDomains();
@@ -29,31 +24,30 @@ function DomainList() {
             Available Domains
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Explore our curated selection of premium domains available for fractional investment
+            Explore our curated selection of premium domains available for
+            fractional investment
           </p>
         </div>
 
         {/* Domain Grid */}
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {domains.length === 0 && loading ? (
-            // Loading Skeletons
-            [...Array(3)].map((_, index) => (
-              <div 
-                key={index}
-                className="bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-800 h-64 animate-pulse"
-              />
-            ))
-          ) : (
-            // Domain Cards
-            domains.map((domain) => (
-              <div 
-                key={domain.$id}
-                className="transform hover:-translate-y-1 transition-all duration-300"
-              >
-                <DomainCard domain={domain} loading={loading} />
-              </div>
-            ))
-          )}
+          {domains.length === 0 && loading
+            ? // Loading Skeletons
+              [...Array(3)].map((_, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-800 h-64 animate-pulse"
+                />
+              ))
+            : // Domain Cards
+              domains.map((domain) => (
+                <div
+                  key={domain.$id}
+                  className="transform hover:-translate-y-1 transition-all duration-300"
+                >
+                  <DomainCard domain={domain} loading={loading} />
+                </div>
+              ))}
         </div>
 
         {/* View More Button */}
