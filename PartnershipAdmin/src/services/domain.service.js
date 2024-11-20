@@ -109,25 +109,29 @@ class DomainService {
         }
     }
 
-    async getAllDomains(searchQuery = '') {
-        try {
-            let queries = [];
-            
-            if (searchQuery) {
-                queries.push(Query.search('name', searchQuery));
-            }
-
-            const response = await databases.listDocuments(
-                appwriteConfig.databaseId,
-                appwriteConfig.domainCollectionId,
-                queries
-            );
-
-            return response.documents;
-        } catch (error) {
-            throw error;
+async getAllDomains(searchQuery = '', page = 1, limit = 10) {
+    try {
+        const offset = (page - 1) * limit;
+        let queries = [
+            Query.limit(limit),
+            Query.offset(offset)
+        ];
+        
+        if (searchQuery) {
+            queries.push(Query.search('name', searchQuery));
         }
+
+        const response = await databases.listDocuments(
+            appwriteConfig.databaseId,
+            appwriteConfig.domainCollectionId,
+            queries
+        );
+
+        return response;
+    } catch (error) {
+        throw error;
     }
+}
 }
 
 export const domainService = new DomainService();

@@ -1,7 +1,7 @@
 // src/components/DomainForm.jsx
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useDomainContext } from '../context/DomainContext';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDomainContext } from "../context/DomainContext";
 
 const DomainForm = () => {
   const { id } = useParams();
@@ -10,19 +10,19 @@ const DomainForm = () => {
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   const [formData, setFormData] = useState({
-    name: '',
-    extenstion: '',
-    description: '',
-    sharePrice: '',
-    regeisterationDate: '',
-    expirationDate: '',
-    category: '',
-    remainingShares: '',
-    projectedValue: '',
+    name: "",
+    extenstion: "",
+    description: "",
+    sharePrice: "",
+    regeisterationDate: "",
+    expirationDate: "",
+    category: "",
+    remainingShares: "",
+    projectedValue: "",
   });
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState({ type: '', text: '' });
+  const [message, setMessage] = useState({ type: "", text: "" });
   const [formloading, setFormLoading] = useState(false);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const DomainForm = () => {
         if (domain) {
           const formatDate = (dateString) => {
             const date = new Date(dateString);
-            return date.toISOString().split('T')[0];
+            return date.toISOString().split("T")[0];
           };
           setFormData({
             name: domain.name,
@@ -56,9 +56,9 @@ const DomainForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -81,19 +81,19 @@ const DomainForm = () => {
       }
 
       setMessage({
-        type: result.success ? 'success' : 'error',
-        text: result.message
+        type: result.success ? "success" : "error",
+        text: result.message,
       });
 
       if (result.success) {
         setTimeout(() => {
-          navigate('/domains');
+          navigate("/domains");
         }, 1500);
       }
     } catch (error) {
       setMessage({
-        type: 'error',
-        text: 'An error occurred while saving the domain'
+        type: "error",
+        text: "An error occurred while saving the domain",
       });
     } finally {
       setLoading(false);
@@ -101,19 +101,27 @@ const DomainForm = () => {
   };
 
   if (formloading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex justify-center items-center h-48">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+      </div>
+    );
   }
 
   return (
     <div className="max-w-2xl mx-auto p-6">
       <h2 className="text-2xl font-bold mb-6">
-        {id ? 'Edit Domain' : 'Add New Domain'}
+        {id ? "Edit Domain" : "Add New Domain"}
       </h2>
-      
+
       {message.text && (
-        <div className={`p-4 mb-4 rounded ${
-          message.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-        }`}>
+        <div
+          className={`p-4 mb-4 rounded ${
+            message.type === "success"
+              ? "bg-green-100 text-green-700"
+              : "bg-red-100 text-red-700"
+          }`}
+        >
           {message.text}
         </div>
       )}
@@ -243,7 +251,7 @@ const DomainForm = () => {
           disabled={loading}
           className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:bg-blue-300"
         >
-          {loading ? 'Saving...' : (id ? 'Update Domain' : 'Add Domain')}
+          {loading ? "Saving..." : id ? "Update Domain" : "Add Domain"}
         </button>
       </form>
     </div>
