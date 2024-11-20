@@ -45,7 +45,7 @@ function Navbar() {
     <>
       <nav
         className={`
-        fixed top-0 left-0 right-0 z-40 w-full
+        fixed top-0 left-0 right-0 z-50 w-full
         transition-all duration-300 ease-in-out
         ${
           hasScrolled
@@ -118,7 +118,7 @@ function Navbar() {
       <div
         id="mobile-menu"
         className={`
-          fixed inset-y-0 right-0 z-40 w-64
+          fixed inset-y-0 right-0 z-50 w-64
           transform transition-transform duration-300 ease-in-out
           ${isOpen ? "translate-x-0" : "translate-x-full"}
           bg-gray-900/95 backdrop-blur-lg border-l border-gray-800

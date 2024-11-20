@@ -25,7 +25,7 @@ const Hero = () => {
               Pakistan's No 1 Trusted Platform for Domain Investments - Partnership.top! 
             </p>
             <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
-              Start your journey into the future of digitalasset ownership today.
+              Start your journey into the future of digital asset ownership today.
             </p>
 
             {/* CTA Buttons */}
