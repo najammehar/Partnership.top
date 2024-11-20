@@ -5,6 +5,11 @@ import { ID, Query } from 'appwrite';
 class DomainService {
     async createDomain(domain, imageFile) {
         try {
+            // Convert types to float
+            domain.sharePrice = parseFloat(domain.sharePrice);
+            domain.remainingShares = parseFloat(domain.remainingShares);
+            domain.projectedValue = parseFloat(domain.projectedValue);
+            
             // Upload image file
             const imageUpload = await storage.createFile(
                 appwriteConfig.bucketId,
@@ -51,6 +56,9 @@ class DomainService {
 
     async updateDomain(domainId, updatedData, newImageFile = null) {
         try {
+            updatedData.sharePrice = parseFloat(updatedData.sharePrice);
+            updatedData.remainingShares = parseFloat(updatedData.remainingShares);
+            updatedData.projectedValue = parseFloat(updatedData.projectedValue);
             let imageUrl = updatedData.imageUrl;
 
             // If new image is provided, upload it

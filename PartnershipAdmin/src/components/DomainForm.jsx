@@ -20,6 +20,7 @@ const DomainForm = () => {
     remainingShares: "",
     projectedValue: "",
   });
+  
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ type: "", text: "" });
