@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail, Clock, MessageSquare } from "lucide-react";
 import emailjs from "emailjs-com";
 import { useState } from "react";
 import { X } from "lucide-react";
+import Config from "../conf/config";
 
 const ContactPage = () => {
   const contactInfo = [
@@ -31,6 +32,10 @@ const ContactPage = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
+  const serviceId = Config.emailjsServiceID;
+  const template_contact_id = Config.emailjsTemplateContactID;
+  const public_key = Config.emailjsPublicKey;
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,10 +43,10 @@ const ContactPage = () => {
 
     try {
       const response = await emailjs.send(
-        "service_teiwvjf",
-        "template_z38nehr",
+        `${serviceId}`,
+        `${template_contact_id}`,
         formData,
-        "i_sIGUfnwlsJYGhnH"
+        `${public_key}`
       );
       console.log("Email sent successfully!", response.status, response.text);
       setShowSuccess(true);

@@ -4,6 +4,7 @@ import emailjs from 'emailjs-com';
 import DomainService from '../services/Domain';
 import { Send, X } from 'lucide-react';
 import formImage from '../assets/formImage.png';
+import Config from '../conf/config';
 
 const InvestmentForm = () => {
   const { domainId } = useParams();
@@ -15,6 +16,9 @@ const InvestmentForm = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
+  const serviceId = Config.emailjsServiceID;
+  const template_investment_id = Config.emailjsTemplateInvestmentID;
+  const public_key = Config.emailjsPublicKey;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -61,10 +65,10 @@ const InvestmentForm = () => {
 
     try {
       const response = await emailjs.send(
-        'service_teiwvjf',
-        'template_utxsszq',
+        `${serviceId}`,
+        `${template_investment_id}`,
         templateParams,
-        'i_sIGUfnwlsJYGhnH'
+        `${public_key}`
       );
       console.log('Email sent successfully!', response.status, response.text);
       setShowSuccess(true);
