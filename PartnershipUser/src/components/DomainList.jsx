@@ -1,14 +1,22 @@
 import React, { useEffect } from "react";
-import { ChevronDown, Loader } from "lucide-react";
+import { ChevronDown, Loader, Search } from "lucide-react";
 import DomainCard from "./DomainCard";
 import { useDomains } from "../hooks/useDomains";
 
 function DomainList() {
-  const { domains, loading, fetchDomains, pagination } = useDomains();
+  const { domains, loading, fetchDomains, fetchSearchResults, pagination } = useDomains();
 
   useEffect(() => {
     fetchDomains();
   }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const query = e.target.search.value;
+    console.log("Search query:", query);
+    
+    fetchSearchResults(query);
+  }
 
   return (
     <section id="domain-list" className="relative py-16 overflow-hidden">
@@ -28,6 +36,24 @@ function DomainList() {
             fractional investment
           </p>
         </div>
+
+        <form onSubmit={handleSearch} className="mb-12 max-w-3xl mx-auto">
+          <div className="flex gap-4">
+            <input
+              type="text"
+              id="search"
+              name="search"
+              className="w-full block bg-gray-800/50 border border-gray-700 rounded-full px-6 py-2 text-gray-200 focus:outline-none focus:border-indigo-500 transition-colors"
+              placeholder="Search by domain name or extension"
+            />
+            <button
+              type="submit"
+              className=" px-2 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-semibold transition-colors duration-200 shadow-lg shadow-indigo-500/25"
+            >
+              <Search />
+            </button>
+          </div>
+        </form>
 
         {/* Domain Grid */}
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">

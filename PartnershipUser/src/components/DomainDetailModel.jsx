@@ -107,11 +107,11 @@ const DomainDetailPage = () => {
               <ul className="space-y-2 text-gray-300">
                 <li className="flex items-center">
                   <span className="mr-2 text-green-500">✓</span>
-                  Estimated Annual Revenue: 500{domain.estimatedRevenue} PKR
+                  Premiunm Domain
                 </li>
                 <li className="flex items-center">
                   <span className="mr-2 text-green-500">✓</span>
-                  Projected Growth: {domain.projectedGrowth}%
+                  Projected Value: {domain.projectedValue}+ pkr
                 </li>
               </ul>
             </div>
