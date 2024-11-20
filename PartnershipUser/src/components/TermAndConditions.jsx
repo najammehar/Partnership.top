@@ -136,9 +136,9 @@ const TermsAndConditions = () => {
 
           {/* Contact Information */}
           <div className="mt-12 bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800">
-            <div className="flex items-center gap-3 text-gray-300">
+            <div className="flex-col md:flex items-center gap-3 text-gray-300">
               <Mail className="w-5 h-5 text-indigo-400" />
-              <span>For inquiries or support, contact us at:</span>
+              <span className="block">For inquiries or support, contact us at:</span>
               <a
                 href="mailto:muzairqureshi06@gmail.com"
                 className="text-indigo-400 hover:text-indigo-300 transition-colors"

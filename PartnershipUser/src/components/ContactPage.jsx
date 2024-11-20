@@ -141,7 +141,7 @@ const ContactPage = () => {
       <div className="container mx-auto px-4 py-16 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800">
+          <div className="bg-gray-900/50 backdrop-blur-sm p-4 rounded-xl border border-gray-800">
             <div className="flex items-center gap-3 mb-6">
               <MessageSquare className="w-6 h-6 text-indigo-400" />
               <h2 className="text-2xl font-bold text-gray-200">

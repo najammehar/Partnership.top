@@ -21,10 +21,11 @@ const Hero = () => {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-indigo-400 to-indigo-200 text-transparent bg-clip-text">
               Invest in Premium Domains
             </h1>
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+              Pakistan's No 1 Trusted Platform for Domain Investments - Partnership.top! 
+            </p>
             <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
-              Own shares in high-value domains and be part of the digital real
-              estate revolution. Start your journey into the future of digital
-              asset ownership today.
+              Start your journey into the future of digitalasset ownership today.
             </p>
 
             {/* CTA Buttons */}

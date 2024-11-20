@@ -151,13 +151,13 @@ const InvestmentForm = () => {
         </div>
       )}
 
-<form onSubmit={handleSubmit} className="relative w-full max-w-7xl grid md:grid-cols-5 grid-cols-1 p-8 gap-8">
+<form onSubmit={handleSubmit} className="relative w-full max-w-7xl grid md:grid-cols-5 grid-cols-1 gap-8">
     {submitLoading && (
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-50">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
         </div>
     )}
-      <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800 md:col-span-3">
+      <div className="bg-gray-900/50 backdrop-blur-sm p-4 rounded-xl border border-gray-800 md:col-span-3">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-200">
             Invest in {domainName}{domainExtension}

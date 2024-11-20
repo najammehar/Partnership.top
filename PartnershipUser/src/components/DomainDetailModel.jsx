@@ -58,7 +58,7 @@ const DomainDetailPage = () => {
   return (
     <>
       <div className="min-h-screen mt-16 flex items-center justify-center p-4 relative z-10">
-        <div className="w-full max-w-7xl overflow-hidden grid md:grid-cols-2 gap-8 px-8 pt-8">
+        <div className="w-full max-w-7xl overflow-hidden grid md:grid-cols-2 gap-8 px-4 pt-8">
           {/* Domain Image Section */}
           <div className="relative h-[500px] rounded-xl overflow-hidden">
             <img
@@ -71,20 +71,20 @@ const DomainDetailPage = () => {
           {/* Domain Details Section */}
           <div className="flex flex-col justify-between">
             {/* Header */}
-            <div className="flex justify-between ">
+            <div className="flex justify-between mb-2">
               <div>
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-indigo-200 text-transparent bg-clip-text hover:from-indigo-300 hover:to-indigo-100 transition-all duration-300">
                   {domain.name}
                   {domain.extenstion}
                 </h1>
               </div>
-              <div className="bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full text-sm ">
-                {domain.category}
+              <div className="bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full text-sm flex items-center justify-center">
+                <div>{domain.category}</div>
               </div>
             </div>
 
             {/* Investment Details */}
-            <div className="grid grid-cols-2 gap-4 bg-gradient-to-br from-indigo-600/10 to-transparent p-6 rounded-xl">
+            <div className="grid grid-cols-2 gap-4 bg-gradient-to-br from-indigo-600/10 to-transparent p-2 rounded-xl">
               <div>
                 <p className="text-gray-400 mb-1">Price per Share</p>
                 <h3 className="text-2xl font-bold text-indigo-300">
@@ -111,7 +111,7 @@ const DomainDetailPage = () => {
                 </li>
                 <li className="flex items-center">
                   <span className="mr-2 text-green-500">✓</span>
-                  Projected Value: {domain.projectedValue}+ pkr
+                  Projected Value: {domain.projectedValue}+ PKR
                 </li>
               </ul>
             </div>
@@ -146,7 +146,7 @@ const DomainDetailPage = () => {
         </div>
       </div>
       {/* Description */}
-      <div className="relative w-full max-w-7xl mx-auto px-8 pb-8 text-justify ">
+      <div className="relative w-full max-w-7xl mx-auto px-6 pb-8 text-justify ">
         <h3 className="text-xl font-semibold text-white mb-3">
           Domain Description
         </h3>

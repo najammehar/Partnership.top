@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Routes, Route } from "react-router-dom";
 import {
   Hero,
@@ -12,10 +12,22 @@ import {
   ContactPage,
   Footer,
 } from "./components";
+import { useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   return (
     <>
+      <ScrollToTop />
       <div className="fixed inset-0 bg-black z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-transparent" />
         <div className="absolute right-0 top-0 w-1/2 h-1/2 bg-indigo-500/10 blur-3xl rounded-full transform translate-x-1/2 -translate-y-1/2" />
