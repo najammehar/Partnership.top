@@ -49,7 +49,7 @@ function Navbar() {
         transition-all duration-300 ease-in-out
         ${
           hasScrolled
-            ? "bg-gray-900/80 backdrop-blur-lg border-b border-gray-800"
+            ? "bg-gray-900/80 backdrop-blur-lg "
             : "bg-transparent"
         }
       `}

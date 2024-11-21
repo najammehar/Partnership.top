@@ -14,17 +14,22 @@ export class DomainService {
 
     async getDomains(limit = 10, offset = 0) {
         try {
+            console.log("Backend fetching with limit:", limit, "and offset:", offset);
             const queries = [
                 Query.orderDesc("$createdAt"),
                 Query.limit(limit),
                 Query.offset(offset)
             ];
+
+
             
             const response = await this.databases.listDocuments(
                 Config.appwriteDatabaseID,
                 Config.appwriteCollectionID,
                 queries
             );
+
+            console.log("Fetched documents:", response.documents.length, "Total:", response.total);
 
             return {
                 documents: response.documents,

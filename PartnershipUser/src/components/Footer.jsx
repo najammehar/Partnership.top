@@ -128,7 +128,7 @@ const Footer = () => {
               <p className="text-gray-400 text-sm">
                 Made with ❤️ for the domain investment community by{" "}
                 <a
-                  href="https://najamulhassan.vercel.app"
+                  href="https://najamulhassan.tech"
                   target="_blank"
                   className="text-indigo-400 hover:text-white transition-colors duration-300"
                 >

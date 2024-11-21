@@ -71,7 +71,7 @@ const DomainDetailPage = () => {
           {/* Domain Details Section */}
           <div className="flex flex-col justify-between">
             {/* Header */}
-            <div className="flex justify-between mb-2">
+            <div className="flex justify-between mb-4">
               <div>
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-indigo-200 text-transparent bg-clip-text hover:from-indigo-300 hover:to-indigo-100 transition-all duration-300">
                   {domain.name}
@@ -84,7 +84,7 @@ const DomainDetailPage = () => {
             </div>
 
             {/* Investment Details */}
-            <div className="grid grid-cols-2 gap-4 bg-gradient-to-br from-indigo-600/10 to-transparent p-2 rounded-xl">
+            <div className="grid grid-cols-2 gap-4 bg-gradient-to-br from-indigo-600/10 to-transparent p-2 rounded-xl mb-4">
               <div>
                 <p className="text-gray-400 mb-1">Price per Share</p>
                 <h3 className="text-2xl font-bold text-indigo-300">
@@ -100,14 +100,14 @@ const DomainDetailPage = () => {
             </div>
 
             {/* Investment Potential */}
-            <div>
-              <h3 className="text-xl font-semibold text-white mb-3">
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold text-white mb-2">
                 Investment Potential
               </h3>
               <ul className="space-y-2 text-gray-300">
                 <li className="flex items-center">
                   <span className="mr-2 text-green-500">✓</span>
-                  Premiunm Domain
+                  Premium Domain
                 </li>
                 <li className="flex items-center">
                   <span className="mr-2 text-green-500">✓</span>
@@ -117,7 +117,7 @@ const DomainDetailPage = () => {
             </div>
 
             {/* Terms and Conditions */}
-            <div>
+            <div className="">
               <label className="flex items-center space-x-2 mb-4">
                 <input
                   type="checkbox"

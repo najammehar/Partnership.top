@@ -47,7 +47,9 @@ const domainReducer = (state, action) => {
                 pagination: {
                     ...state.pagination,
                     total: action.payload.total,
-                    offset: state.pagination.offset + action.payload.domains.length
+                    offset: action.payload.isLoadMore
+                ? state.domains.length + action.payload.domains.length
+                : action.payload.domains.length,
                 }
             };
         case 'FETCH_SEARCH_DOMAINS_ERROR':
@@ -73,11 +75,18 @@ export const DomainProvider = ({ children }) => {
     });
 
     const fetchDomains = useCallback(async (isLoadMore = false) => {
+        if (isLoadMore && state.domains.length >= state.pagination.total) {
+            console.log("All domains loaded.");
+            return; // Stop fetching if all domains are loaded
+        }
+
+        const offset = isLoadMore ? state.domains.length : 0;
+        console.log("Fetching domains with offset:", offset);
         dispatch({ type: 'FETCH_DOMAINS_START' });
         try {
             const { documents, total } = await domainService.getDomains(
                 state.pagination.limit, 
-                isLoadMore ? state.pagination.offset : 0
+                offset
             );
             
             dispatch({ 
