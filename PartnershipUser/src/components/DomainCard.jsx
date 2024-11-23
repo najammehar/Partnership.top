@@ -72,7 +72,11 @@ const DomainCard = ({ domain, loading }) => {
             <div className="flex items-center justify-between text-gray-400">
               <span>Available Shares</span>
               <span className="font-medium text-indigo-200">
-                {domain.remainingShares}%
+                {domain.remainingShares <= 0 ? (
+                  <span className="text-red-500">Sold Out</span>
+                ) : (
+                  <span>{domain.remainingShares}%</span>
+                )}
               </span>
             </div>
           </div>

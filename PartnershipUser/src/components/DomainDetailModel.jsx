@@ -11,6 +11,7 @@ const DomainDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [priceEror, setPriceEror] = useState(false);
 
   useEffect(() => {
     const fetchDomainDetails = async () => {
@@ -30,6 +31,10 @@ const DomainDetailPage = () => {
   }, [domainId]);
 
   const handleInvestment = () => {
+    if (domain.remainingShares <= 0) {
+      setPriceEror(true);
+      return;
+    }
     if (termsAccepted) {
       navigate(`/invest/${domainId}`);
     }
@@ -96,7 +101,11 @@ const DomainDetailPage = () => {
               <div className="bg-indigo-600/10 p-4 rounded-xl">
                 <p className="text-gray-400 text-sm">Available Shares</p>
                 <h3 className="text-2xl font-bold text-indigo-300 mt-1">
-                  {domain.remainingShares}%
+                {domain.remainingShares <= 0 ? (
+                  <span className="text-red-500">Sold Out!</span>
+                ) : (
+                  <span>{domain.remainingShares}%</span>
+                )}
                 </h3>
               </div>
               <div className="bg-indigo-600/10 p-4 rounded-xl">
@@ -169,6 +178,13 @@ const DomainDetailPage = () => {
                     </Link>
                   </span>
                 </label>
+
+                {priceEror && (
+                  <div className="flex items-center space-x-2 text-red-500">
+                    <AlertCircle className="w-6 h-6" />
+                    <p>All the shares have been Sold Out!</p>
+                  </div>
+                )}
 
                 <button
                   onClick={handleInvestment}
