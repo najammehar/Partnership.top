@@ -64,9 +64,9 @@ const DomainCard = ({ domain, loading }) => {
           {/* Details */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-gray-400">
-              <span>Price per 1%</span>
+              <span>Price (5%)</span>
               <span className="font-medium text-indigo-200">
-                {domain.sharePrice} PKR
+                ${domain.sharePrice}
               </span>
             </div>
             <div className="flex items-center justify-between text-gray-400">

@@ -109,10 +109,10 @@ const Footer = () => {
             <div className="flex items-center space-x-2 text-gray-400">
               <Mail className="w-5 h-5" />
               <a
-                href="mailto:muzairqureshi06@gmail.com"
+                href="mailto:uzairqureshicontact@gmail.com"
                 className="hover:text-white transition-colors duration-300"
               >
-                muzairqureshi06@gmail.com
+                uzairqureshicontact@gmail.com
               </a>
             </div>
           </div>
@@ -128,11 +128,19 @@ const Footer = () => {
               <p className="text-gray-400 text-sm">
                 Made with ❤️ for the domain investment community by{" "}
                 <a
+                  href="https://uzairqureshi.com"
+                  target="_blank"
+                  className="text-indigo-400 hover:text-white transition-colors duration-300"
+                >
+                  Uzair Qureshi
+                </a>{" "}
+                and{" "}
+                <a
                   href="https://najamulhassan.tech"
                   target="_blank"
                   className="text-indigo-400 hover:text-white transition-colors duration-300"
                 >
-                    Najam Ul Hassan
+                  Najam
                 </a>
               </p>
             </div>

@@ -20,7 +20,7 @@ const ContactPage = () => {
     {
       icon: <Mail className="w-6 h-6 text-indigo-400" />,
       title: "Email Addresses",
-      details: ["muzairqureshi06@gmail.com"],
+      details: ["uzairqureshicontact@gmail.com"],
     },
   ];
   const [formData, setFormData] = useState({

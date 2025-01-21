@@ -233,18 +233,22 @@ const InvestmentForm = () => {
               >
                 Percentage of Shares to Buy
               </label>
-              <input
-                type="number"
+              <select
                 id="sharePercentage"
                 name="sharePercentage"
                 value={formData.sharePercentage}
                 onChange={handleInputChange}
-                min="1"
-                max="100"
-                placeholder="Enter Percentage of Shares to Buy"
                 className="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:border-indigo-500 transition-colors"
                 required
-              />
+              >
+                <option value="">Select Percentage</option>
+                <option value="5">5%</option>
+                <option value="10">10%</option>
+                <option value="15">15%</option>
+                <option value="20">20%</option>
+                <option value="25">25%</option>
+                <option value="30">30%</option>
+              </select>
             </div>
 
             <div>
