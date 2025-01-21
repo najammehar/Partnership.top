@@ -93,7 +93,7 @@ const DomainDetailPage = () => {
             {/* Investment Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-indigo-600/10 p-4 rounded-xl">
-                <p className="text-gray-400 text-sm">Price (5%)</p>
+                <p className="text-gray-400 text-sm">Price per share</p>
                 <h3 className="text-2xl font-bold text-indigo-300 mt-1">
                   ${domain.sharePrice}
                 </h3>
@@ -111,7 +111,7 @@ const DomainDetailPage = () => {
               <div className="bg-indigo-600/10 p-4 rounded-xl">
                 <p className="text-gray-400 text-sm">Projected Value</p>
                 <h3 className="text-2xl font-bold text-indigo-300 mt-1">
-                  {domain.projectedValue}+
+                  ${domain.projectedValue}+
                 </h3>
               </div>
               <div className="bg-indigo-600/10 p-4 rounded-xl">
