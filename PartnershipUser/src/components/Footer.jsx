@@ -26,7 +26,7 @@ const Footer = () => {
       {
         label: "Facebook",
         icon: <Facebook className="w-5 h-5" />,
-        href: "https://facebook.com/amuzairqureshi06",
+        href: "https://facebook.com/amuzairqureshi",
       },
       {
         label: "Instagram",
